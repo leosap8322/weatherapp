@@ -1,6 +1,9 @@
 import Header from './components/Header';
 import { useState } from 'react';
 import { useWeather } from './hooks/useWeather';
+import SearchBar from './components/search-bar/SearchBar';
+import WeatherCard from './components/weather-card/WeatherCard';
+import ErrorMessage from './components/error-message/ErrorMessage';
 
 const App = () => {
   const { weather, error, loading, searchWeather } = useWeather(); 
@@ -9,17 +12,15 @@ const App = () => {
   return (
       <>
         <Header />
-          <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-          <button onClick={() => searchWeather(city)} disabled={loading}>
-            {loading ? 'Searching...' : 'Search'}
-          </button>
+          <SearchBar
+            city={city}
+            loading={loading}
+            onCityChange={setCity}
+            onSearch={() => searchWeather(city)}
+          />
           
-          {city.trim() === '' && <p>Please enter a city name to see the weather information.</p>}
-          {weather &&   <div>
-           <p>Current city: {weather.city}</p>
-           <p>Temperature: {weather.temperature}°C</p>
-          </div> }
-          { error && <p>{error}</p> }
+          {weather && <WeatherCard weather={weather} />}
+          { error && <ErrorMessage message={error} /> }
       </>
       
   );
