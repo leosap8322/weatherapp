@@ -7,8 +7,8 @@ function SearchBar({
     onSearch, 
     }: ISearchBarProps) {
         return (
-        <>
-            <input 
+        <div className="flex items-center space-x-4">
+            <input className="flex-1 px-4 py-2 rounded-lg border bg-gray-200 focus:ring-2" placeholder="Enter city..."
                 type="text" 
                 value={city}
                 onChange={(e) => onCityChange(e.target.value)} 
@@ -18,11 +18,11 @@ function SearchBar({
                     }
                 }}
             />
-            <button 
+            <button className="px-4 py-2 rounded-lg  bg-blue-600  text-white border hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={onSearch} 
                 disabled={loading}>
             {loading ? 'Searching...' : 'Search'}
             </button>
-        </>  
+        </div>  
     );
 } export default SearchBar;
