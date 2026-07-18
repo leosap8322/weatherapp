@@ -12,6 +12,7 @@ export const useWeather = (): IUseWeatherReturn => {
     const [loading, setLoading] = useState(false);
     const searchWeather = async (city: string) => {
       setLoading(true);
+      setError(null);
       try {
         const weatherData = await fetchWeatherData(city);
         setError(null);

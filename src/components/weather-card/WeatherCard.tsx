@@ -1,10 +1,11 @@
+import Card from "../Card/Card";
 import type { IWeatherCardProps } from "./weather-card-props.interface";
 
 function WeatherCard({
     weather,
     }: IWeatherCardProps) {
     return ( 
-        <div className="bg-white rounded-xl py-10 px-10 shadow-md w-80"> 
+        <Card>
             <div className="mb-6 text-center"> 
                 <h2 className="font-semibold">{weather.city}</h2> 
                 <p className="font-bold text-4xl">{Math.round(weather.temperature)}°C</p> 
@@ -26,8 +27,9 @@ function WeatherCard({
                     <span className="text-gray-600">Description: </span>
                     <span>{weather.description}</span>
                 </div>
-                <img className="mx-auto" src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
+                <img className="mx-auto" src={`https://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
             </div>
-        </div> )
+        </Card> 
+        )
     }
 export default WeatherCard;

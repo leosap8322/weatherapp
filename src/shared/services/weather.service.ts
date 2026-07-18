@@ -1,5 +1,5 @@
 import type { IWeather } from "../interfaces/weather.interface";
-import { Weather } from "../clases/weather";
+import { Weather } from "../classes/weather";
 import type { IOpenWeatherApiResponse } from "../interfaces/open-weather-api-response.interface";
 import type { IOpenWeatherApiResponseError } from "../interfaces/open-weather-api-response-error.interface";
 
